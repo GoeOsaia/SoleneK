@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merry Christmas, Kirsten!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      color: #2c3e50;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #87ceeb, #f5f5f5);
+    }
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9SLPdTNbVaOByFeNJDOgmQEyPT8uuT3TEls40LAdIQV0792DtU53U6f4&s=10) no-repeat center center fixed;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    #main-content {
+      display: none;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    #countdown {
+      font-size: 2em;
+      color: #416981;
+      margin-top: 50px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { text-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 30px #416981; }
+      100% { text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #416981; }
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      font-size: 1.5em;
+      color: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    h1 {
+      color: #ffffff;
+      font-size: 3em;
+      text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #416981;
+    }
+
+    .message {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://static.elfsight.com/platform/platform.js" async></script>
+  <div class="elfsight-app-730d633c-1a9c-4952-85a9-a570657d772f" data-elfsight-app-lazy></div>
+
+  <div id="background"></div>
+
+  <div id="countdown">
+    🎄 Baby, the page will be available at 12:00 AM, December 25! 🎄
+    <div id="timer"></div>
+  </div>
+
+  <div id="main-content">
+    <h1>Merry Christmas, Kirsten! 🎄</h1>
+    <div class="message">
+      <p>
+        Dear Kirsten, Merry Christmas! I don’t think I can let this day pass without writing something just for you. I want to start by saying how thankful I am to have you in my life. You’ve brought so much happiness, love, and light that I never thought I’d deserve. You’re not just my baby, pero po you’re also my best friend, my inspiration, and my safe space all in one. Thank you for loving me so selflessly, for understanding me even on my worst days, and for believing in me in ways no one else ever has. You’ve made me feel special in every way, and for that, I’ll always be grateful.
+      </p>
+      <p>
+        Today, as we celebrate Christmas, I just want you to know how much you mean to me. You’ve taught me the true meaning of love, a love that is patient, kind, and unconditional. Every moment with you feels like a blessing, and every day I spend with you only makes me love you even more. Thank you for inspiring me to be a better person, for pushing me to take care of myself, and for reminding me of my worth. Kirsten, you’ve truly changed my life for the better, and I’ll never stop thanking God for bringing you into my life. You’re the greatest gift I’ve ever received, and no amount of words will ever be enough to express how much I cherish you.
+      </p>
+      <p>
+        As this year comes to an end, I want you to know that I’m so excited for all the memories we’ll make together in the future. I promise to love you even more, to support you in everything you do, and to stand by you through every high and low. You’ve given me so much, and all I want is to give you the love and happiness you truly deserve. Baby, you’re my home, my peace, and my everything. Thank you for being you, and thank you for loving me. Merry Christmas, Kirsten. I love you with all my heart. 💙
+      </p>
+    </div>
+    <footer>
+      <p>From your one and only, Geo 💙✨</p>
+    </footer>
+  </div>
+
+  <script>
+    const targetDate = new Date("December 25, 2024 00:00:00").getTime();
+    const countdownElement = document.getElementById("timer");
+    const mainContent = document.getElementById("main-content");
+    const countdownContainer = document.getElementById("countdown");
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        countdownContainer.style.display = "none";
+        mainContent.style.display = "block";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    };
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // Snowflake Animation
+    const createSnowflake = () => {
+      const snowflake = document.createElement("div");
+      snowflake.classList.add("snowflake");
+      snowflake.textContent = "❄️";
+      snowflake.style.left = Math.random() * window.innerWidth + "px";
+      snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+      snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+      document.body.appendChild(snowflake);
+
+      setTimeout(() => {
+        snowflake.remove();
+      }, 5000);
+    };
+
+    setInterval(createSnowflake, 200);
+  </script>
+</body>
+</html>
